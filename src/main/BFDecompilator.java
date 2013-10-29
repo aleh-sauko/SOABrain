@@ -238,7 +238,9 @@ public class BFDecompilator {
             "\n" +
             "        static FuckedByte read() {\n" +
             "            try {\n" +
-            "                return new FuckedByte(System.in.read());\n" +
+            "                int b;\n" +
+            "                while (((b = System.in.read()) == '\\n') || (b == '\\r'));\n" +
+            "                return new FuckedByte(b);\n" +
             "            } catch (Exception e) {\n" +
             "                throw new RuntimeException(\"Error reading from System.in\");\n" +
             "            }\n" +
